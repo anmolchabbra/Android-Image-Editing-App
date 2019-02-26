@@ -81,7 +81,7 @@ public class Transform {
         RGBAPixel[][] rotate = RGBAPixel.copyArray(originalImage);
           if (rotate.length == rotate[0].length) {
               for (int i = 0; i < rotate.length; i++) {
-                  for (int j = 0; j < rotate[i].length; j++) {
+                  for (int j = 0; j < rotate[i].length; j++) { 
                       rotate[j][i] = originalImage[i][j];
                       RGBAPixel[][] transpose = RGBAPixel.copyArray(rotate);
                       rotate[rotate.length - i - 1][j] = transpose[i][j];
