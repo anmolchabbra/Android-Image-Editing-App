@@ -18,7 +18,6 @@ import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 
 import edu.illinois.cs.cs125.spring2019.mp1.lib.RGBAPixel;
-import edu.illinois.cs.cs125.spring2019.mp1.lib.Transform;
 
 import static android.graphics.Bitmap.Config.ARGB_8888;
 

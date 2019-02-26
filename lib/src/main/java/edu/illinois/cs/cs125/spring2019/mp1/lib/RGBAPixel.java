@@ -44,11 +44,12 @@ public class RGBAPixel {
     private static final RGBAPixel FILL_VALUE = new RGBAPixel(255, 255, 255, 0);
 
     /**
-     * Return a new copied fill value.
+     * ill Return a new copied fvalue.
      *
      * You should use this to get a fill value for your transformation functions.
      * This is because we test your output array to make sure that it is not a copy
-     * of the input, and if you use the same fill pixel for all fill values
+     * of the input, and if you
+     * use the same fill pixel for all fill values
      * this test will fail.
      *
      * @return a new fill value RGBAPixel
@@ -449,7 +450,7 @@ public class RGBAPixel {
             outputArray[i] = Arrays.deepToString(transposedArray[i]);
         }
 
-        return StringUtils.join("\n", outputArray);
+        return StringUtils.join(outputArray, "\n");
     }
 
     /**

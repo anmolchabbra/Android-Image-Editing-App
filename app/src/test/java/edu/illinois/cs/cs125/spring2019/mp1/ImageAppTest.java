@@ -18,7 +18,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.Shadows;
 
 import edu.illinois.cs.cs125.spring2019.mp1.lib.RGBAPixel;
-import edu.illinois.cs.cs125.spring2019.mp1.lib.Transform;
 
 @RunWith(RobolectricTestRunner.class)
 @PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*"})
