@@ -77,10 +77,12 @@ public class Transform {
         return shift;
     }
 
- /*   public static RGBAPixel[][] rotateRight(RGBAPixel[][] originalImage) {
+    public static RGBAPixel[][] rotateRight(RGBAPixel[][] originalImage) {
         RGBAPixel[][] rotate = RGBAPixel.copyArray(originalImage);
+        int i;
+        int j;
           if (rotate.length == rotate[0].length) {
-              for (int i = 0; i < rotate.length; i++) {
+              for (i = 0; i < rotate.length; i++) {
                   for (int j = 0; j < rotate[i].length; j++) { 
                       rotate[j][i] = originalImage[i][j];
                       RGBAPixel[][] transpose = RGBAPixel.copyArray(rotate);
@@ -108,8 +110,8 @@ public class Transform {
     }
         RGBAPixel.printArray(rotate);
         return rotate;
-                } */
-/*
+                }
+
     public static RGBAPixel[][] rotateLeft(RGBAPixel[][] originalImage) {
         RGBAPixel[][] rotate = RGBAPixel.copyArray(originalImage);
         if (rotate.length == rotate[0].length) {
@@ -147,7 +149,7 @@ public class Transform {
         }
         // RGBAPixel.printArray(rotate);
         return rotate;
-    } */
+    }
 
     public static RGBAPixel[][] flipVertical(RGBAPixel[][] originalImage) {
        // RGBAPixel[][] flip = new RGBAPixel[originalImage.length][originalImage[0].length];
