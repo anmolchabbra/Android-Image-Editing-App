@@ -18,6 +18,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.Shadows;
 
 import edu.illinois.cs.cs125.spring2019.mp1.lib.RGBAPixel;
+import edu.illinois.cs.cs125.spring2019.mp1.lib.Transform;
 
 @RunWith(RobolectricTestRunner.class)
 @PowerMockIgnore({"org.mockito.*", "org.robolectric.*", "android.*"})
@@ -34,22 +35,22 @@ public class ImageAppTest {
         PowerMockito.mockStatic(Transform.class);
         int[] calls = {0, 0};
         Mockito
-            .when(Transform.flipHorizontal(Mockito.any()))
-            .then(invocation -> {
-                calls[0]++;
-                return invocation.getArgumentAt(0, RGBAPixel[][].class);
-            });
+                .when(Transform.flipHorizontal(Mockito.any()))
+                .then(invocation -> {
+                    calls[0]++;
+                    return invocation.getArgumentAt(0, RGBAPixel[][].class);
+                });
         Mockito
-            .when(Transform.flipVertical(Mockito.any()))
-            .then(invocation -> {
-                calls[1]++;
-                return invocation.getArgumentAt(0, RGBAPixel[][].class);
-            });
+                .when(Transform.flipVertical(Mockito.any()))
+                .then(invocation -> {
+                    calls[1]++;
+                    return invocation.getArgumentAt(0, RGBAPixel[][].class);
+                });
 
         // Set up the activity
         MainActivity activity = Robolectric.setupActivity(MainActivity.class);
         activity.setForegroundBitmap(BitmapFactory.decodeResource(
-            activity.getApplicationContext().getResources(), R.drawable.cornfield_background)
+                activity.getApplicationContext().getResources(), R.drawable.cornfield_background)
         );
 
         // Click the flip-horizontal button

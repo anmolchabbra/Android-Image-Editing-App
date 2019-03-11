@@ -255,12 +255,12 @@ public final class MainActivity extends AppCompatActivity {
          * Load background images into a map keyed by their drawable ID.
          */
         for (int backgroundID : new int[] {R.drawable.boniver_background,
-            R.drawable.cornfield_background,
-            R.drawable.datacenter_background,
-            R.drawable.facebook_background,
-            R.drawable.memorialstadium_background,
-            R.drawable.tajmahal_background,
-            R.drawable.siebel_background}) {
+                R.drawable.cornfield_background,
+                R.drawable.datacenter_background,
+                R.drawable.facebook_background,
+                R.drawable.memorialstadium_background,
+                R.drawable.tajmahal_background,
+                R.drawable.siebel_background}) {
             backgroundImages.put(backgroundID, BitmapFactory.decodeResource(getResources(), backgroundID));
         }
 
@@ -586,8 +586,8 @@ public final class MainActivity extends AppCompatActivity {
     private void enableOrDisableButtons(final boolean enableOrDisable) {
         Log.d(TAG, "enableOrDisable " + enableOrDisable);
         for (int viewID : new int[] {R.id.shiftDown, R.id.shiftDown, R.id.rotateLeft, R.id.rotateRight,
-            R.id.shiftLeft, R.id.shiftRight, R.id.expand, R.id.greenScreen, R.id.shrink,
-            R.id.flipVertical, R.id.flipHorizontal}) {
+                R.id.shiftLeft, R.id.shiftRight, R.id.expand, R.id.greenScreen, R.id.shrink,
+                R.id.flipVertical, R.id.flipHorizontal}) {
             final ImageButton button = findViewById(viewID);
             button.setClickable(enableOrDisable);
             button.setEnabled(enableOrDisable);

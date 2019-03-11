@@ -18,6 +18,7 @@ import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 
 import edu.illinois.cs.cs125.spring2019.mp1.lib.RGBAPixel;
+import edu.illinois.cs.cs125.spring2019.mp1.lib.Transform;
 
 import static android.graphics.Bitmap.Config.ARGB_8888;
 
@@ -86,43 +87,43 @@ class Tasks {
             int targetHeight = photoView.getHeight();
 
             ImageRequest imageRequest = new ImageRequest(downloadURL[0],
-                response -> {
-                    /*
-                     * If the download succeeded, try to draw the image on the screen.
-                     */
-                    activity.setForegroundBitmap(response);
-                    try {
+                    response -> {
                         /*
-                         * And also try to save the image.
+                         * If the download succeeded, try to draw the image on the screen.
                          */
-                        File outputFile = activity.getSaveFilename();
-                        if (outputFile == null) {
-                            throw new Exception("null output file");
+                        activity.setForegroundBitmap(response);
+                        try {
+                            /*
+                             * And also try to save the image.
+                             */
+                            File outputFile = activity.getSaveFilename();
+                            if (outputFile == null) {
+                                throw new Exception("null output file");
+                            }
+                            OutputStream outputStream = new FileOutputStream(outputFile);
+                            response.compress(Bitmap.CompressFormat.JPEG,
+                                    DEFAULT_COMPRESSION_QUALITY_LEVEL, outputStream);
+                            outputStream.flush();
+                            outputStream.close();
+                            activity.addPhotoToGallery(Uri.fromFile(outputFile));
+                        } catch (Exception e) {
+                            Log.w(TAG, "Problem saving image: " + e);
                         }
-                        OutputStream outputStream = new FileOutputStream(outputFile);
-                        response.compress(Bitmap.CompressFormat.JPEG,
-                                DEFAULT_COMPRESSION_QUALITY_LEVEL, outputStream);
-                        outputStream.flush();
-                        outputStream.close();
-                        activity.addPhotoToGallery(Uri.fromFile(outputFile));
-                    } catch (Exception e) {
-                        Log.w(TAG, "Problem saving image: " + e);
-                    }
 
-                    // Clear the progress bar
-                    ProgressBar progressBar = activity.findViewById(R.id.progressBar);
-                    progressBar.setVisibility(View.INVISIBLE);
-                }, targetWidth, targetHeight,
-                ImageView.ScaleType.FIT_CENTER, Bitmap.Config.RGB_565,
-                e -> {
-                    // If the download failed alert the user and clear the progress bar
-                    Toast.makeText(activity.getApplicationContext(),
-                            "Image download failed",
-                            Toast.LENGTH_LONG).show();
-                    Log.w(TAG, "Image download failed: " + e);
-                    ProgressBar progressBar = activity.findViewById(R.id.progressBar);
-                    progressBar.setVisibility(View.INVISIBLE);
-                });
+                        // Clear the progress bar
+                        ProgressBar progressBar = activity.findViewById(R.id.progressBar);
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }, targetWidth, targetHeight,
+                    ImageView.ScaleType.FIT_CENTER, Bitmap.Config.RGB_565,
+                    e -> {
+                        // If the download failed alert the user and clear the progress bar
+                        Toast.makeText(activity.getApplicationContext(),
+                                "Image download failed",
+                                Toast.LENGTH_LONG).show();
+                        Log.w(TAG, "Image download failed: " + e);
+                        ProgressBar progressBar = activity.findViewById(R.id.progressBar);
+                        progressBar.setVisibility(View.INVISIBLE);
+                    });
             requestQueue.add(imageRequest);
             return 0;
         }

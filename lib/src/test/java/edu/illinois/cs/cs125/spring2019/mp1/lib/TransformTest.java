@@ -21,7 +21,7 @@ public class TransformTest {
      * ******************************************************************/
 
     /** Timeout for shift tests. Solution takes 42ms. */
-    private static final int POSITION_SHIFT_TEST_TIMEOUT = 420;
+    private static final int POSITION_SHIFT_TEST_TIMEOUT = 800;
 
     /**
      * Test position shifts with pre-computed results.
@@ -181,7 +181,7 @@ public class TransformTest {
      * ******************************************************************/
 
     /** Timeout for expand tests. Solution takes 52 ms. */
-    private static final int EXPAND_TEST_TIMEOUT = 520;
+    private static final int EXPAND_TEST_TIMEOUT = 800;
 
     /**
      * Test valid expansions with pre-computed results.
